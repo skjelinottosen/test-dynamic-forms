@@ -1,0 +1,9 @@
+<ng-container *ngIf="formReady">
+  <form [formGroup]="form">
+      <ng-container *ngFor="let field of fieldset">
+        <lib-dynamic-field [field]="field"></lib-dynamic-field>
+      </ng-container>
+  </form>
+</ng-container>
+
+

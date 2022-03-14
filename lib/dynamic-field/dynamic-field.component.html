@@ -1,0 +1,62 @@
+<ng-container *ngIf="field.visible !== false" [ngSwitch]="field.type">
+
+     <!--INPUT-->
+     <div class="row mb-2" *ngSwitchCase="7">
+          <div class="col-8 d-flex flex-column">
+               <label class="small fw-bold">Gln</label>
+               <input type="text" [formControl]="control">
+          </div>
+          <div class="col-4"></div>
+     </div>
+
+     <!-- DATEPICKER -->
+     <div class="row mb-2" *ngSwitchCase="1">
+          <div class="col d-flex d-flex flex-column">
+               <label class="small fw-bold">Dato</label>
+               <div class="d-flex justify-content-center align-items-center ">
+                    <input type="form-control" ngbDatepicker #d="ngbDatepicker" name="dp" placeholder="yyyy-mm-dd"
+                         [formControl]="control">
+                    <button class="btn btn-sm btn-outline-secondary calendar" (click)="d.toggle()">Velg dato</button>
+               </div>
+
+          </div>
+     </div>
+
+
+     <!--SELECT DROPDOWN-->
+     <div class="row mb-2" *ngSwitchCase="3">
+          <div class="col" *ngIf="field.options">
+               <ng-select [items]="field.options" [multiple]="true" [closeOnSelect]="false" [searchable]="false"
+                    bindLabel="name" placeholder="Velg pakningsnivå" [(ngModel)]="fieldModels">
+               </ng-select>
+          
+
+          </div>
+
+          <div class="mt-3">
+               Selected value: <br />
+               <ul>
+                    <li *ngFor="let item of fieldModels">{{item.name}}</li>
+               </ul>
+
+          </div>
+
+     </div>
+     
+
+     <!--SELECT DROPDOWN
+     <div class="row mb-2" *ngSwitchCase="3">
+          <div class="col">
+               <div ngbDropdown class="d-inline-block">
+                    <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>{{field.name |
+                         sentenceCase}}</button>
+                    <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+
+                         <button ngbDropdownItem *ngFor="let option of field.options"
+                              [value]="option">{{option}}</button>
+                    </div>
+               </div>
+          </div>
+     </div>
+-->
+</ng-container>
