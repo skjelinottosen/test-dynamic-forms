@@ -1,0 +1,126 @@
+[{
+    "Gruppe": "Product",
+    "GruppeSortering": 1,
+    "Felter": [{
+            "Feltnavn": "VaretekstKort",
+            "FieldID": 1,
+            "Visible": "true",
+            "Required": "true"
+        }, {
+            "Feltnavn": "VaretekstLang",
+            "FieldID": 2,
+            "Visible": "true",
+            "Required": "true"
+        },
+        {
+            "Feltnavn": "TekniskBeskrivelse",
+            "FieldID": 3,
+            "Visible": "true",
+            "Required": "true"
+        }
+    ]
+},
+{
+    "Gruppe": "Basispakning",
+    "GruppeSortering": 2,
+    "Felter": [{
+            "Feltnavn": "GTIN",
+            "FieldID": 100,
+            "Visible": "true",
+            "Required": "true"
+        }, {
+            "Feltnavn": "Emballasje",
+            "FieldID": 101,
+            "Visible": "true",
+            "Required": "true"
+        },
+        {
+            "Feltnavn": "ErForbrukerenhet",
+            "FieldID": 102,
+            "Visible": "true",
+            "Required": "true"
+        }
+    ]
+}, {
+    "Gruppe": "Mellom1",
+    "GruppeSortering": 3,
+    "Felter": [{
+            "Feltnavn": "GTIN",
+            "FieldID": 100,
+            "Visible": "true",
+            "Required": "true"
+        }, {
+            "Feltnavn": "Emballasje",
+            "FieldID": 101,
+            "Visible": "true",
+            "Required": "true"
+        },
+        {
+            "Feltnavn": "AntallPakningerIPakningen",
+            "FieldID": 105,
+            "Visible": "true",
+            "Required": "true"
+        }
+    ]
+}, {
+    "Gruppe": "Mellom2",
+    "GruppeSortering": 4,
+    "Felter": [{
+            "Feltnavn": "GTIN",
+            "FieldID": 100,
+            "Visible": "true",
+            "Required": "true"
+        }, {
+            "Feltnavn": "Emballasje",
+            "FieldID": 101,
+            "Visible": "true",
+            "Required": "#rule1#"
+        },
+        {
+            "Feltnavn": "AntallPakningerIPakningen",
+            "FieldID": 105,
+            "Visible": "true",
+            "Required": "true"
+        }
+    ]
+}, {
+    "Gruppe": "Top",
+    "GruppeSortering": 5,
+    "Felter": [{
+            "Feltnavn": "GTIN",
+            "FieldID": 100,
+            "Visible": "true",
+            "Required": "true"
+        }, {
+            "Feltnavn": "Emballasje",
+            "FieldID": 101,
+            "Visible": "true",
+            "Required": "#rule1#"
+        },
+        {
+            "Feltnavn": "AntallPakningerIPakningen",
+            "FieldID": 105,
+            "Visible": "true",
+            "Required": "true"
+        },
+        {
+            "Feltnavn": "AntallLagPåTopp",
+            "FieldID": 120,
+            "Visible": "true",
+            "Required": "true"
+        },
+        {
+            "Feltnavn": "AntallPakningerPrLagPåTopp",
+            "FieldID": 121,
+            "Visible": "true",
+            "Required": "false"
+        },
+        {
+            "Feltnavn": "HøydePrLagPåTopp",
+            "FieldID": 121,
+            "Visible": "true",
+            "Required": "false"
+        }
+    ]
+}
+]

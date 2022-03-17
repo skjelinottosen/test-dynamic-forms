@@ -9,7 +9,7 @@ import { NgbDate, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 })
 export class DynamicFieldComponent implements OnInit {
   @Input() field!: Field;
-  public control!: FormControl;
+  public control!: FormControl
   public FieldType = FieldType;
   public fieldModels!: any[];
   constructor(private formGroupDir: FormGroupDirective) { }

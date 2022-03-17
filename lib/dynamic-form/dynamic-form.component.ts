@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { KeyValuePair } from 'lib/dynamic-reactive-form.model';
 import { DynamicReactiveFormService } from 'lib/dynamic-reactive-form.service';
+import { BehaviorSubject } from 'rxjs';
 export enum FieldType {
   CHECKBOX,
   DATEPICKER,
@@ -37,7 +38,8 @@ export class DynamicFormComponent implements OnInit {
   /**
    * Initialize Inputs passed in from parent component
    */
-  @Input() fieldset: Field[] =[]; // Required
+  @Input() fieldset$ = new BehaviorSubject<Field[]>([]); // Required
+  fieldset: Field[] = [];
   @Input() errors: Error[] = []; // Optional
   @Input() prefillData: KeyValuePair[] = []; // Optional (default values)
   @Input() readOnly = false; // Optional
@@ -62,23 +64,32 @@ export class DynamicFormComponent implements OnInit {
   constructor(private formBuilder: FormBuilder, private dynamicReactiveFormService: DynamicReactiveFormService) { }
 
   ngOnInit(): void {
+
     /**
      * Confirm a fieldset was passed in
      */
-    if (this.fieldset) {
-      /**
-       * Initialize Reactive Form
-       */
-      this.initializeForm();
 
-      this.form.valueChanges.subscribe(data => {
-        this.dynamicReactiveFormService.formDataChanged(data);
 
-       });
-    }
-    else {
-      console.warn('Please pass a fieldset into the dynamic form component.');
-    }
+    this.fieldset$.subscribe(fieldSet => {
+      this.fieldset = fieldSet;
+
+      if (this.fieldset) {
+        /**
+         * Initialize Reactive Form
+         */
+        this.initializeForm();
+  
+        this.form.valueChanges.subscribe(data => {
+          this.dynamicReactiveFormService.formDataChanged(data);
+          console.log(this.form.controls)
+  
+         });
+      }
+      else {
+        console.warn('Please pass a fieldset into the dynamic form component.');
+      }
+    })
+   
   }
 
   initializeForm(): void {
@@ -164,11 +175,13 @@ export class DynamicFormComponent implements OnInit {
      * (passing in readOnly = true will disabled ALL fields)
      */
     const validation = field.validation ? field.validation : [];
+    const asyncValidation = field.asyncValidation ? field.asyncValidation : [];
     const isDisabled = field.disabled || this.readOnly ? true : false;
     /**
      * That's it, we're done! Return our new Form Control up to the form.
      */
-    return this.formBuilder.control({ value, disabled: isDisabled }, validation);
+
+    return this.formBuilder.control({ value, disabled: isDisabled }, validation,  asyncValidation );
   }
 
   handleSlideToggleChildren(): void {

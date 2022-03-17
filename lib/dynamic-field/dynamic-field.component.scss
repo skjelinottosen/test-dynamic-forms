@@ -1,1 +1,12 @@
-@import "~@ng-select/ng-select/themes/material.theme.css"; 
+@import "~@ng-select/ng-select/themes/default.theme.css";
+
+
+input.ng-invalid.ng-touched,
+textarea.ng-invalid.ng-touched {
+  border: 1px solid red;
+}
+
+input.ng-valid.ng-touched,
+textarea.ng-valid.ng-touched {
+  border: 1px solid green;
+}

@@ -1,18 +1,22 @@
-<ng-container *ngIf="field.visible !== false" [ngSwitch]="field.type">
-
+<ng-container *ngIf="control && field.visible !== false" [ngSwitch]="field.type">
      <!--INPUT-->
-     <div class="row mb-2" *ngSwitchCase="7">
+
+     
+     {{control.errors |json}}
+
+     <p  *ngIf="control.hasError('usernameAlreadyExists')">feil</p>
+     <div class="row mb-3" *ngSwitchCase="7">
           <div class="col-8 d-flex flex-column">
-               <label class="small fw-bold">Gln</label>
-               <input type="text" [formControl]="control">
+               <label class="small fw-bold">{{field.name}}</label>
+               <input type="text" [formControl]="control"  value="Batman" [ngClass]="{'is-invalid': control.errors?.['required'], 'is-valid': control.errors?.length === 0}" >
           </div>
           <div class="col-4"></div>
      </div>
 
      <!-- DATEPICKER -->
-     <div class="row mb-2" *ngSwitchCase="1">
+     <div class="row mb-3" *ngSwitchCase="1">
           <div class="col d-flex d-flex flex-column">
-               <label class="small fw-bold">Dato</label>
+               <label class="small fw-bold">{{field.name}}</label>
                <div class="d-flex justify-content-center align-items-center ">
                     <input type="form-control" ngbDatepicker #d="ngbDatepicker" name="dp" placeholder="yyyy-mm-dd"
                          [formControl]="control">
@@ -24,23 +28,14 @@
 
 
      <!--SELECT DROPDOWN-->
-     <div class="row mb-2" *ngSwitchCase="3">
+     <div class="row mb-3" *ngSwitchCase="3">
           <div class="col" *ngIf="field.options">
                <ng-select [items]="field.options" [multiple]="true" [closeOnSelect]="false" [searchable]="false"
-                    bindLabel="name" placeholder="Velg pakningsnivå" [(ngModel)]="fieldModels">
+                    bindLabel="name" placeholder="Velg pakningsnivå" [(ngModel)]="fieldModels"  type="form-control" [formControl]="control">
                </ng-select>
           
 
           </div>
-
-          <div class="mt-3">
-               Selected value: <br />
-               <ul>
-                    <li *ngFor="let item of fieldModels">{{item.name}}</li>
-               </ul>
-
-          </div>
-
      </div>
      
 

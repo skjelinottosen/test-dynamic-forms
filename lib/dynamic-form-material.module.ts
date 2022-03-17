@@ -9,6 +9,7 @@ const passThroughArray = [
   CommonModule,
   NgbModule,
   NgSelectModule,
+
   FormsModule,
 ];
 

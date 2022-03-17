@@ -13,7 +13,7 @@ import { NgSelectModule } from '@ng-select/ng-select';
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    DynamicFormMaterialModule
+    DynamicFormMaterialModule,
   ],
   exports: [DynamicFormComponent]
 })
