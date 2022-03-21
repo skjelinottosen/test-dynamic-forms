@@ -22,6 +22,7 @@ export interface Field {
     options?: string[];
     parent?: string;
     validation?: Validators[];
+    asyncValidation?: Validators[];
     visible?: boolean;
 }
 

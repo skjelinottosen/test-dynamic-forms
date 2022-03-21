@@ -10,7 +10,7 @@ export class FormService {
 
   constructor() { }
 
-  private existingUsernames = ['Batman', 'Superman', 'Joker', 'Luthor'];
+  private existingUsernames = ['Edison'];
   
   getValidator(value: string): Observable<boolean>{
     return of(this.existingUsernames.some((a) => a === value)).pipe(

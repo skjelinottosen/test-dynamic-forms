@@ -6,6 +6,7 @@ import { DynamicFieldComponent } from './dynamic-field/dynamic-field.component';
 import { SentenceCasePipe } from './sentence-case.pipe';
 import { DynamicFormMaterialModule } from './dynamic-form-material.module';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -14,6 +15,7 @@ import { NgSelectModule } from '@ng-select/ng-select';
     CommonModule,
     ReactiveFormsModule,
     DynamicFormMaterialModule,
+    HttpClientModule
   ],
   exports: [DynamicFormComponent]
 })
